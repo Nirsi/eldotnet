@@ -1,11 +1,9 @@
-namespace eldotnet
+namespace eldotnet.Asm
 {
     public enum Keywords
     {
         ADD,
         SUB,
-        MOV,
-        PUSH,
-        POP
+        MOV
     }
 }

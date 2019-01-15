@@ -12,6 +12,7 @@ namespace eldotnet
         {
             if(DEBUG)
                 Stream.Out.DebugLogged += DebugLoggedHandler;
+            Stream.Out.RuntimeLogged += RuntimeLoggedHandler;
 
             //Stream.Out.LogDebug("This is logget debug message from Main method and raised from event handler");
 
@@ -33,6 +34,9 @@ namespace eldotnet
             Console.WriteLine("DEBUG: " + e.Message);
         }
 
-        
+        static void RuntimeLoggedHandler(Object sender, ReportStreamArgs e)
+        {
+            Console.WriteLine("DEBUG: " + e.Message);
+        }
     }
 }
