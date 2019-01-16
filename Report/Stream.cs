@@ -84,5 +84,12 @@ namespace eldotnet.Report
             args.Message = message;
             OnDebug(args);
         }
+
+        public void LogRuntime(string message)
+        {
+            ReportStreamArgs args = new ReportStreamArgs();
+            args.Message = message;
+            OnRuntime(args);
+        }
     }
 }
