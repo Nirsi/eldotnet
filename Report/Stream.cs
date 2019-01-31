@@ -5,7 +5,7 @@ namespace eldotnet.Report
 {
     public class Stream
     {
-        string message;
+        //string message;
 
         #region Singleton init
         public static Stream instance = null;
