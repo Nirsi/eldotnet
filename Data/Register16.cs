@@ -11,15 +11,26 @@ namespace eldotnet.Data
          public short value {
             get
             {
-                return Convert.ToInt16(temp, 2);;
+                return 0;
             }
             set{
-                //TODO: come up with simplier code
                 string[] vals = new string[2];
-                vals[0] = temp.Substring(0, 4);
-                vals[1] = temp.Substring(4, 4);
+
+                vals[0] = Convert.ToString(value, 2).PadLeft(8, '0').Substring(0, 4);
+                vals[1] = Convert.ToString(value, 2).PadLeft(8, '0').Substring(4, 4);
+               
                 H = Convert.ToByte(vals[0], 2);
                 L = Convert.ToByte(vals[1], 2);
+
+                Log.Out.LogDebug(string.Format(
+                "original value: {0}\n"+
+                "Converted to binary: {1}\n"+
+                "4 higher bits: {2}\n"+
+                "4 lower bits: {3}\n"+
+                "4 higher bits converted: {4}\n"+
+                "4 lower bits converted: {5}",
+                 value, Convert.ToString(value, 2).PadLeft(8, '0'), vals[0], vals[1], this.H, this.L
+                ));
             }
          }
     }
