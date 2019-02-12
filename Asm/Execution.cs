@@ -21,6 +21,8 @@ namespace eldotnet.Asm
             {
                 register.value = Convert.ToInt16(arg2);
             }
+            Registers.C.value += (short)1;
+            Log.Out.LogDebug(string.Format("Line count increased to {0}", Registers.C.value));
         }
 
         public static void Add<T1>(Register16 register, T1 arg2)
@@ -33,6 +35,8 @@ namespace eldotnet.Asm
             {
                 register.value += Convert.ToInt16(arg2);
             }
+            Registers.C.value += (short)1;
+            Log.Out.LogDebug(string.Format("Line count increased to {0}", Registers.C.value));
         }
 
         #endregion
