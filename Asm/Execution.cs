@@ -39,6 +39,11 @@ namespace eldotnet.Asm
             Log.Out.LogDebug(string.Format("Line count increased to {0}", Registers.C.value));
         }
 
+        public static void Add<T1>(Register8 register, T1 arg2)
+        {
+            
+        }
+
         #endregion
     
         

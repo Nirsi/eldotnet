@@ -3,10 +3,10 @@ using eldotnet.Report;
 
 namespace eldotnet.Data
 {
-    public class Register16
+    public class Register16 : IRegister
     {
-        public byte H;
-        public byte L;
+        public Register8 H;
+        public Register8 L;
          
 
         public Register16(short number = 0)
@@ -14,12 +14,15 @@ namespace eldotnet.Data
             this.value = number;
         }
 
+
+        public byte size {get {return 16;} private set{this.size = 16;}}
+
         public short value {
             get
             {
                 string[] parts = new string[2];
-                parts[0] = Convert.ToString(this.H, 2).PadLeft(8, '0');
-                parts[1] = Convert.ToString(this.L, 2).PadLeft(8, '0');
+                parts[0] = Convert.ToString(this.H.value.value, 2).PadLeft(8, '0');
+                parts[1] = Convert.ToString(this.L.value, 2).PadLeft(8, '0');
                 string whole = parts[0] + parts[1];
 
                 Log.Out.LogDebug(string.Format(
@@ -29,7 +32,7 @@ namespace eldotnet.Data
                 "8 lower bits value: {3}\n"+
                 "whole as binary: {4}\n"+
                 "whole value: {5}\n",
-                parts[0], parts[1], this.H, this.L, whole, Convert.ToInt16(whole, 2)
+                parts[0], parts[1], this.H.value, this.L.value, whole, Convert.ToInt16(whole, 2)
                 ));
 
                 return Convert.ToInt16(whole, 2);
@@ -40,8 +43,8 @@ namespace eldotnet.Data
                 vals[0] = Convert.ToString(value, 2).PadLeft(16, '0').Substring(0, 8);
                 vals[1] = Convert.ToString(value, 2).PadLeft(16, '0').Substring(8, 8);
                
-                H = Convert.ToByte(vals[0], 2);
-                L = Convert.ToByte(vals[1], 2);
+                H.value = Convert.ToByte(vals[0], 2);
+                L.value = Convert.ToByte(vals[1], 2);
 
                 Log.Out.LogDebug(string.Format(
                 "original value: {0}\n"+
@@ -50,7 +53,7 @@ namespace eldotnet.Data
                 "8 lower bits: {3}\n"+
                 "8 higher bits converted: {4}\n"+
                 "8 lower bits converted: {5}",
-                 value, Convert.ToString(value, 2).PadLeft(16, '0'), vals[0], vals[1], this.H, this.L
+                 value, Convert.ToString(value, 2).PadLeft(16, '0'), vals[0], vals[1], this.H.value, this.L.value
                 ));
             }
         }
