@@ -6,7 +6,7 @@ namespace eldotnet.Report
     public class Log
     {
         #region Singleton init
-        public static Log instance = null;
+        private static Log instance = null;
 
         private Log() {}
 
