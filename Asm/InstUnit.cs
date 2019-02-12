@@ -1,3 +1,5 @@
+using eldotnet.Data;
+
 namespace eldotnet.Asm
 {
     public struct InstUnit

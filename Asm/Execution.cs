@@ -1,3 +1,4 @@
+using System;
 using eldotnet.Data;
 using eldotnet.Report;
 
@@ -8,42 +9,29 @@ namespace eldotnet.Asm
 
         #region instruction handling
 
-        private Type rType = typeof(Register16);
-        public static void Mov<T1>(Register16 arg1, T1 arg2)
+        protected static Type rType = typeof(Register16);
+        public static void Mov<T1>(Register16 register, T1 arg2)
         {
-            if(T1 == rType)
+            
+            if(arg2.GetType() == rType)
             {
-                if(arg2.GetType() == rType)
-                {
-                    (arg1 as registerType).value = (arg2 as registerType).value;
-                }
-                else
-                {
-                    (arg1 as registerType).value = (short)arg2;
-                }
+                register.value = (arg2 as Register16).value;
             }
             else
             {
-                Log.Out.LogRuntime("First argument of MOV can't be of type" + arg1.GetType());
+                register.value = Convert.ToInt16(arg2);
             }
         }
 
-        public static void Add<T1, T2>(T1 arg1, T2 arg2)
+        public static void Add<T1>(Register16 register, T1 arg2)
         {
-            if(arg1.GetType() == typeof(Register16))
+            if(arg2.GetType() == rType)
             {
-                if(arg2.GetType() == rType)
-                {
-                    (arg1 as registerType).value = (arg1 as registerType).value + (arg2 as registerType).value;
-                }
-                else
-                {
-                    (arg1 as registerType).value = (arg1 as registerType).value + (short)arg2;
-                }
+                    register.value += (arg2 as Register16).value;
             }
             else
             {
-                Log.Out.LogRuntime("First argument of ADD can't be of type" + arg1.GetType());
+                register.value += Convert.ToInt16(arg2);
             }
         }
 

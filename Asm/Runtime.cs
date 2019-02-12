@@ -8,7 +8,7 @@ namespace eldotnet.Asm
 
         public static void Init(string sourcepath)
         {
-           this.Source = Parser.ReadSourceLines(sourcepath);
+           Source = Parser.ReadSourceLines(sourcepath);
         }
 
         public static void Run()
@@ -20,7 +20,7 @@ namespace eldotnet.Asm
                 switch(parts[0].ToLower())
                 {
                     case "add":
-                        Execution.Add<Register16, short>(part);
+                            Execution.Add<Register16>(Registers.NameToRegister(parts[1]), new Register16());
                         break; 
                 }
 

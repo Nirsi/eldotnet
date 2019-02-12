@@ -5,7 +5,7 @@ namespace eldotnet.Asm
 {
     public class Parser
     {
-        static string[] ReadSourceLines(string fileName)
+        internal static string[] ReadSourceLines(string fileName)
         {
             return File.ReadAllLines(fileName);
         }
@@ -13,6 +13,9 @@ namespace eldotnet.Asm
         static bool AnalyzeCode()
         {
             //TODO: pre runtime code analysis
+            
+            Report.Log.Out.LogDebug("AnalyzeCode is unimplemented");
+            return false;
         }
     }
 }
