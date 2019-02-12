@@ -1,42 +1,44 @@
 ﻿using System;
 using eldotnet.Report;
 using eldotnet.Data;
+using eldotnet.Asm;
 
 namespace eldotnet
 {
     class Program
     {
-
-        static bool DEBUG = false;
         static void Main(string[] args)
         {
-            if(DEBUG)
-                Stream.Out.DebugLogged += DebugLoggedHandler;
-            Stream.Out.RuntimeLogged += RuntimeLoggedHandler;
+           
+           Log.Out.DebugLogged += DebugLoggedHandler;
+           Log.Out.RuntimeLogged += RuntimeLoggedHandler;
 
-            //Stream.Out.LogDebug("This is logget debug message from Main method and raised from event handler");
-
-            Registers.HL1.L = 10;
-            Registers.HL1.H = 5;
-
-            //Console.WriteLine("HL1-L: {0} \nHL1-H: {1} \nHL1: {2}", Registers.HL1.L, Registers.HL1.H, Registers.HL1.value);
-
-            Console.WriteLine("L: {0}\nH: {1}\n HL1: {2}\n\n setting value to whole HL1 = 50");
-            Registers.HL1.value = 50;
+            Registers.R1.value = (short)20;
+            Registers.R2.value = (short)5;
 
 
+            Execution.Add<short>(Registers.R1, 10);
+            Execution.Add<short>(Registers.R2, 5);
+            Execution.Add<Register16>(Registers.R1, Registers.R2);
+
+            Console.WriteLine(Registers.R1.value);
+            Console.WriteLine(Registers.R2.value);
+            
+            
+            
+            
             Console.ReadLine();
 
         }
 
-        static void DebugLoggedHandler(Object sender, ReportStreamArgs e)
+        static void DebugLoggedHandler(Object sender, ReportLogArgs e)
         {
-            Console.WriteLine("DEBUG: " + e.Message);
+            Console.WriteLine("DEBUG:\n" + e.Message);
         }
 
-        static void RuntimeLoggedHandler(Object sender, ReportStreamArgs e)
+        static void RuntimeLoggedHandler(Object sender, ReportLogArgs e)
         {
-            Console.WriteLine("DEBUG: " + e.Message);
+            Console.WriteLine("DEBUG:\n" + e.Message);
         }
     }
 }
