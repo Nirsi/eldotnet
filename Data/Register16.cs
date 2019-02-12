@@ -9,6 +9,11 @@ namespace eldotnet.Data
         public byte L;
          
 
+        public Register16(short number = 0)
+        {
+            this.value = number;
+        }
+
         public short value {
             get
             {
