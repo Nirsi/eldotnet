@@ -1,9 +1,9 @@
 namespace eldotnet.Data
 {
-    public class Register8 : IRegister
+    public class Register8 : Register
     {
         private byte val;
-        public byte size {get{ return 8; } private set{this.size = value;}}
+        public new byte size {get{ return 8; } private set{this.size = 8;}}
         public byte value {
             get{
                 return this.val;

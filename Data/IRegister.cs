@@ -1,7 +1,7 @@
 namespace eldotnet.Data
 {
-    public interface IRegister
+    public abstract class Register
     {
-        
+        public byte size;
     }
 }

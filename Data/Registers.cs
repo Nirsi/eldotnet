@@ -23,7 +23,7 @@ namespace eldotnet.Data
                 return false;
         }
 
-        public static IRegister NameToRegister(string registerName)
+        public static Register NameToRegister(string registerName)
         {
             switch(registerName)
             {

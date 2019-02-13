@@ -3,25 +3,39 @@ using eldotnet.Report;
 
 namespace eldotnet.Data
 {
-    public class Register16 : IRegister
+    public class Register16 : Register
     {
         public Register8 H;
         public Register8 L;
+        private byte _size;
          
 
         public Register16(short number = 0)
         {
+            H = new Register8();
+            L = new Register8();
+            this.size = 16;
             this.value = number;
         }
 
 
-        public byte size {get {return 16;} private set{this.size = 16;}}
+        public byte size 
+        {
+            get 
+            {
+                return _size;
+            } 
+            private set
+            {
+                this._size = value;
+            }
+        }
 
         public short value {
             get
             {
                 string[] parts = new string[2];
-                parts[0] = Convert.ToString(this.H.value.value, 2).PadLeft(8, '0');
+                parts[0] = Convert.ToString(this.H.value, 2).PadLeft(8, '0');
                 parts[1] = Convert.ToString(this.L.value, 2).PadLeft(8, '0');
                 string whole = parts[0] + parts[1];
 
