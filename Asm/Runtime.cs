@@ -1,5 +1,7 @@
 using System;
+
 using eldotnet.Data;
+using eldotnet.Report;
 
 namespace eldotnet.Asm
 {
@@ -9,16 +11,17 @@ namespace eldotnet.Asm
 
         public static void Init(string sourcepath)
         {
-           Source = Parser.ReadSourceLines(sourcepath);
+            Log.Out.LogRuntime("Loading source from " + sourcepath);
+            Source = Parser.ReadSourceLines(sourcepath);
         }
 
-        public static void Run(string source)
+        public static void Run()
         {
-            //foreach (string line in Source)
+            foreach (string line in Source)
             {
 
                 //Temporary placeholder for actual loaded source
-                string[] parts = source.Split(' ');
+                string[] parts = line.Split(' ');
 
                 switch(parts[0].ToLower())
                 {
