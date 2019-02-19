@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using eldotnet.Report;
 
 namespace eldotnet.Data
@@ -10,30 +11,47 @@ namespace eldotnet.Data
         public static Register16 R2 = new Register16(0);
         public static Register16 C  = new Register16(0);
 
+        private static Dictionary<string, Register> registers;
+
+        static Registers()
+        {
+            registers = new Dictionary<string, Register>();
+
+            registers.Add("R1", R1);
+            registers.Add("R2", R2);
+            registers.Add("R1.L", R1.L);
+            registers.Add("R1.H", R1.H);
+            registers.Add("R2.L", R2.L);
+            registers.Add("R2.H", R2.H);
+
+            registers.Add("C", C);
+        }
         public static string[] ToArray()
         {
-            return new string[] {"R1", "R2", "C"};
+            return new string[] {"R1", "R2", "C", "L1", "H1", "L2", "H2"};
         }
 
         public static bool IsRegister(string name)
         {
-            if(Registers.ToArray().Contains(name))
-                return true;
+            if(registers.ContainsKey(name))
+            {
+                    return true;
+            }
             else
+            {
                 return false;
+            }
         }
 
-        public static Register16 NameToRegister(string registerName)
+        public static Register NameToRegister(string registerName)
         {
-            switch(registerName)
+            foreach (var pair in registers)
             {
-                case "R1": return R1;
-                case "R2": return R2;
-
-                default:
-                    Log.Out.LogDebug("Unknown register, creating new unnamed register");
-                    return new Register16();
+                if(pair.Key == registerName)
+                    return pair.Value;
             }
+            Log.Out.LogRuntime("No register with name " + registerName + "was found returning null");
+            return null;
         }
     }
 }
