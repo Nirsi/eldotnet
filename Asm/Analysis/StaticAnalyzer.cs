@@ -17,5 +17,17 @@ namespace eldotnet.Asm.Analysis
 
             return true;
         }
+
+        #region TestCases
+
+        private static bool InstructionTest(string[] line)
+        {
+            if(Asm.Execution.Instructions.Contains(line[0].ToLower()))
+                return true;
+            else
+                return false;
+        }
+
+        #endregion
     }
 }

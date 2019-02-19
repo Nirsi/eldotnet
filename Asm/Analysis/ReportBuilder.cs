@@ -18,7 +18,12 @@ namespace eldotnet.Asm.Analysis
 
         internal static void ExcessiveParams(int lineNumber, string originalLine)
         {
-            GenerateReport(string.Format("Excessive parameter on line\n{0}: {1}", lineNumber, originalLine));
+            GenerateReport(string.Format("Excessive parameter on line\n{0}|  {1}", lineNumber, originalLine));
+        }
+
+        internal static void UnknownInstruction(int lineNumber, string originalLine)
+        {
+            GenerateReport(string.Format("Uknown instruction on line\n{0}|  {1}", lineNumber, originalLine));
         }
     }
 }
