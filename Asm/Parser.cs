@@ -5,17 +5,22 @@ namespace eldotnet.Asm
 {
     public class Parser
     {
-        internal static string[] ReadSourceLines(string fileName)
+        private static string[] ReadSourceLines(string fileName)
         {
             return File.ReadAllLines(fileName);
         }
-
-        static bool AnalyzeCode()
+        public static string[] LoadCode(string fileName)
         {
-            //TODO: pre runtime code analysis
-            
-            Report.Log.Out.LogDebug("AnalyzeCode is unimplemented");
-            return false;
+            string[] Source = ReadSourceLines(fileName);
+
+            if (Analysis.StaticAnalyzer.ProcessCode(Source))
+                return Source;
+            else
+            {
+                Console.ReadLine();
+                Environment.Exit(-1);
+                return null;
+            }
         }
     }
 }
