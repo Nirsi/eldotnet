@@ -5,7 +5,7 @@ namespace eldotnet.Asm.Analysis
         public static bool ProcessCode(string[] Source)
         {
 
-            bool sucses = true;
+            bool success = true;
             for (int i = 0; i < Source.Length; i++)
             {
                 string[] line = Source[i].Split(' ');
@@ -13,21 +13,48 @@ namespace eldotnet.Asm.Analysis
                 if(line.Length > 3)
                 {
                     ReportBuilder.ExcessiveParams(i, Source[i]);
-                    sucses = false;
+                    success = false;
+                }
+
+                if(InstructionTest(line))
+                {
+                    ReportBuilder.UnknownInstruction(i, Source[i]);
+                    success = false;
                 }
             }
 
-            return sucses;
+            return success;
         }
 
         #region TestCases
 
+        private static bool LineOrderTest(string[] line)
+        {
+            if(short.TryParse(line[1]))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private static bool InstructionTest(string[] line)
         {
+            //inverse of result
             if(Asm.Execution.Instructions.Contains(line[0].ToLower()))
-                return true;
-            else
                 return false;
+            else
+                return true;
+        }
+        
+        private static bool RegisterTest(string[] line)
+        {
+            if(Data.Registers.IsRegister(line[2]))
+            {
+
+            }
         }
 
         #endregion
