@@ -4,6 +4,8 @@ namespace eldotnet.Asm.Analysis
     {
         public static bool ProcessCode(string[] Source)
         {
+
+            bool sucses = true;
             for (int i = 0; i < Source.Length; i++)
             {
                 string[] line = Source[i].Split(' ');
@@ -11,11 +13,11 @@ namespace eldotnet.Asm.Analysis
                 if(line.Length > 3)
                 {
                     ReportBuilder.ExcessiveParams(i, Source[i]);
-                    return false;
+                    sucses = false;
                 }
             }
 
-            return true;
+            return sucses;
         }
 
         #region TestCases
