@@ -10,33 +10,27 @@ namespace eldotnet
     {
         static void Main(string[] args)
         {
-            Init();
-            
+            ReportingSet(1);
 
-            ReportBuilder.ExcessiveParams(20, "Add R1 5 R2");
+            StaticAnalyzer.ProcessCode(new string[] {"Add 1 R1"});
 
-            Registers.R1.value = (short)20;
-            Registers.R2.value = (short)5;
-
-
-            Execution.Add<short>(Registers.R1, 10);
-            Execution.Add<short>(Registers.R2, 5);
-            Execution.Add<Register16>(Registers.R1, Registers.R2);
-
-            Console.WriteLine(Registers.R1.value);
-            Console.WriteLine(Registers.R2.value);
-            
-            
-            
-            
             Console.ReadLine();
 
         }
 
-        private static void Init()
+        private static void ReportingSet(int level)
         {
-            //Log.Out.DebugLogged += DebugLoggedHandler;
-            Log.Out.RuntimeLogged += RuntimeLoggedHandler;
+            if (level == 2)
+            {
+                Log.Out.DebugLogged += DebugLoggedHandler;
+                return;
+            }
+            if (level == 1)
+            {
+                Log.Out.RuntimeLogged += RuntimeLoggedHandler;
+                return;
+            }
+            Console.WriteLine("Loging disabled");
         }
 
         static void DebugLoggedHandler(Object sender, ReportLogArgs e)
@@ -46,7 +40,7 @@ namespace eldotnet
 
         static void RuntimeLoggedHandler(Object sender, ReportLogArgs e)
         {
-            Console.WriteLine("DEBUG:\n" + e.Message);
+            Console.WriteLine(e.Message);
         }
     }
 }
