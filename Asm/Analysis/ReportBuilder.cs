@@ -11,11 +11,11 @@ namespace eldotnet.Asm.Analysis
             Log.Out.LogRuntime(string.Format(
                 "{0}\n"+
                 "----------------------------------------------\n"+
-                "{3}|\n"+
+                "{3} |\n"+
                 //source line position in report
-                "{1}|  {2}\n"+
-                "{3}|\n"+
-                "{3}|\n"+
+                "{1} |   {2}\n"+
+                "{3} |\n"+
+                "{3} |\n"+
                 "----------------------------------------------"
                 , errorTitle, lineNumber, ErrorMessage, padding
             ));
@@ -38,6 +38,7 @@ namespace eldotnet.Asm.Analysis
 
         internal static void ParamNotARegister(int lineNumber, string originalLine)
         {
-            GenerateReport(lineNumber, "Unknown register", originalLine);        }
+            GenerateReport(lineNumber, "Unknown register", originalLine);       
+        }
     }
 }
