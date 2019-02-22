@@ -2,6 +2,7 @@
 using eldotnet.Report;
 using eldotnet.Data;
 using eldotnet.Asm;
+using eldotnet.Asm.Analysis;
 
 namespace eldotnet
 {
@@ -9,9 +10,10 @@ namespace eldotnet
     {
         static void Main(string[] args)
         {
-           
-           Log.Out.DebugLogged += DebugLoggedHandler;
-           Log.Out.RuntimeLogged += RuntimeLoggedHandler;
+            Init();
+            
+
+            ReportBuilder.ExcessiveParams(20, "Add R1 5 R2");
 
             Registers.R1.value = (short)20;
             Registers.R2.value = (short)5;
@@ -29,6 +31,12 @@ namespace eldotnet
             
             Console.ReadLine();
 
+        }
+
+        private static void Init()
+        {
+            //Log.Out.DebugLogged += DebugLoggedHandler;
+            Log.Out.RuntimeLogged += RuntimeLoggedHandler;
         }
 
         static void DebugLoggedHandler(Object sender, ReportLogArgs e)
