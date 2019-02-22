@@ -11,6 +11,7 @@ namespace eldotnet.Asm.Analysis
                 "Code Report\n"+
                 "----------------------------------------------\n"+
                 "{0}\n"+
+                " |\n"+
                 "----------------------------------------------"
                 , message
             ));
@@ -23,7 +24,17 @@ namespace eldotnet.Asm.Analysis
 
         internal static void UnknownInstruction(int lineNumber, string originalLine)
         {
-            GenerateReport(string.Format("Uknown instruction on line\n{0}|  {1}", lineNumber, originalLine));
+            GenerateReport(string.Format("Unknown instruction on line\n |\n{0}|  {1}\n |   ^", lineNumber, originalLine));
+        }
+
+        internal static void WrongOrder(int lineNumber, string originalLine)
+        {
+            GenerateReport(string.Format("Wrong code order on line \n{0}|  {1}", lineNumber, originalLine));
+        }
+
+        internal static void ParamNotARegister(int lineNumber, string originalLine)
+        {
+            GenerateReport(string.Format("Unknown register on line \n{0}|  {1}", lineNumber, originalLine));
         }
     }
 }
