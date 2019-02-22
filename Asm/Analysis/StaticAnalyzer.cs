@@ -21,6 +21,18 @@ namespace eldotnet.Asm.Analysis
                     ReportBuilder.UnknownInstruction(i, Source[i]);
                     success = false;
                 }
+
+                if(LineOrderTest(line))
+                {
+                    ReportBuilder.WrongOrder(i, Source[i]);
+                }
+                else
+                {
+                    if(RegisterTest(line))
+                    {
+                        ReportBuilder.ParamNotARegister(i, Source[i]);
+                    }
+                }
             }
 
             return success;
@@ -30,13 +42,14 @@ namespace eldotnet.Asm.Analysis
 
         private static bool LineOrderTest(string[] line)
         {
-            if(short.TryParse(line[1]))
+            short a;
+            if(short.TryParse(line[1], out a))
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
@@ -51,10 +64,20 @@ namespace eldotnet.Asm.Analysis
         
         private static bool RegisterTest(string[] line)
         {
-            if(Data.Registers.IsRegister(line[2]))
+            short a;
+            if(!short.TryParse(line[2], out a))
             {
-
+                if(Data.Registers.IsRegister(line[2]))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
+            return false;
+            
         }
 
         #endregion
