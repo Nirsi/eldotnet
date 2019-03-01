@@ -9,7 +9,17 @@ namespace eldotnet.Data
     {
         public static Register16 R1 = new Register16(0);
         public static Register16 R2 = new Register16(0);
+        /// <summary>
+        /// Instruction counter
+        /// </summary>
+        /// <returns>It's value</returns>
         public static Register16 C  = new Register16(0);
+        /// <summary>
+        /// Zero register
+        /// Set to 1 if last operation equals 0
+        /// </summary>
+        /// <returns></returns>
+        public static Register8  Z  = new Register8 (0);
 
         private static Dictionary<string, Register> registers;
 

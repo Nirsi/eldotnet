@@ -12,7 +12,10 @@ namespace eldotnet
         {
             ReportingSet(1);
 
-            StaticAnalyzer.ProcessCode(new string[] {"Add 1 R1"});
+            string[] Source = new string[] {"Add R1 5", "Mov R1 0", "Add"};
+            StaticAnalyzer.ProcessCode(Source);
+            Runtime.Source = Source;
+            Runtime.Run();
 
             Console.ReadLine();
 

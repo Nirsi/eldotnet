@@ -7,7 +7,7 @@ namespace eldotnet.Asm
 {
     public class Runtime
     {
-        public static string[] Source {get; private set;}
+        public static string[] Source {get; set;}
 
         public static void Init(string sourcepath)
         {
@@ -15,12 +15,14 @@ namespace eldotnet.Asm
             Source = Parser.LoadCode(sourcepath);
         }
 
+        /// <summary>
+        /// Main vCPU function
+        /// Hardcoded instruction handling.false Not really an ideal state but will rewrite it later on ...maybe
+        /// </summary>
         public static void Run()
         {
             foreach (string line in Source)
             {
-
-                //Temporary placeholder for actual loaded source
                 string[] parts = line.Split(' ');
 
                 switch(parts[0].ToLower())
