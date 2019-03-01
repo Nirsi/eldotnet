@@ -16,6 +16,12 @@ namespace eldotnet.Asm.Analysis
                     success = false;
                 }
 
+                if(line.Length < 2)
+                {
+                    ReportBuilder.MissingParams(i, Source[i]);
+                    success = false;
+                }
+
                 if(InstructionTest(line))
                 {
                     ReportBuilder.UnknownInstruction(i, Source[i]);

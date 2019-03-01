@@ -26,6 +26,11 @@ namespace eldotnet.Asm.Analysis
             GenerateReport(lineNumber, "Excessive parameter", originalLine);
         }
 
+        internal static void MissingParams(int lineNumber, string originalLine)
+        {
+            GenerateReport(lineNumber, "Missing parameter", originalLine);
+        }
+
         internal static void UnknownInstruction(int lineNumber, string originalLine)
         {
             GenerateReport(lineNumber, "Unknown instruction", originalLine);
