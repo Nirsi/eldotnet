@@ -31,12 +31,14 @@ namespace eldotnet.Asm.Analysis
                 if(LineOrderTest(line))
                 {
                     ReportBuilder.WrongOrder(i, Source[i]);
+                    success = false;
                 }
                 else
                 {
                     if(RegisterTest(line))
                     {
                         ReportBuilder.ParamNotARegister(i, Source[i]);
+                        success = false;
                     }
                 }
             }

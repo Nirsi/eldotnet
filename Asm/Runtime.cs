@@ -17,7 +17,7 @@ namespace eldotnet.Asm
 
         /// <summary>
         /// Main vCPU function
-        /// Hardcoded instruction handling.false Not really an ideal state but will rewrite it later on ...maybe
+        /// Hardcoded instruction handling not really an ideal state but will rewrite it later on ...maybe
         /// </summary>
         public static void Run()
         {
