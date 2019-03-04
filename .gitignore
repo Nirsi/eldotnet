@@ -341,6 +341,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-# My test case assmebler files
+# My test case assembler files
 test.asm
 

@@ -9,11 +9,13 @@ namespace eldotnet.Data
     {
         public static Register16 R1 = new Register16(0);
         public static Register16 R2 = new Register16(0);
+
         /// <summary>
         /// Instruction counter
         /// </summary>
         /// <returns>It's value</returns>
         public static Register16 C  = new Register16(0);
+
         /// <summary>
         /// Zero register
         /// Set to 1 if last operation equals 0
@@ -60,7 +62,7 @@ namespace eldotnet.Data
                 if(pair.Key == registerName)
                     return pair.Value;
             }
-            Log.Out.LogRuntime("No register with name " + registerName + "was found returning null");
+            Log.Out.LogRuntime("No register with name " + registerName + " found returning null");
             return null;
         }
     }

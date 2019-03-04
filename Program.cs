@@ -12,9 +12,11 @@ namespace eldotnet
         {
             ReportingSet(1);
 
-            string[] Source = new string[] {"Add R1 5", "Mov R1 0", "Add R1 2"};
-            StaticAnalyzer.ProcessCode(Source);
-            Runtime.Source = Source;
+            /*
+            tesing asm file
+            TODO: forward args to path
+            */
+            Runtime.Init("test.asm");
             Runtime.Run();
 
             Console.ReadLine();
