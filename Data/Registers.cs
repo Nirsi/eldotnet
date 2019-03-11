@@ -30,13 +30,13 @@ namespace eldotnet.Data
             registers = new Dictionary<string, Register>();
 
             registers.Add("R1", R1);
-            registers.Add("R2", R2);
             registers.Add("R1.L", R1.L);
             registers.Add("R1.H", R1.H);
+            registers.Add("R2", R2);            
             registers.Add("R2.L", R2.L);
             registers.Add("R2.H", R2.H);
-
             registers.Add("C", C);
+            registers.Add("Z", Z);
         }
         /*
         public static string[] ToArray()
