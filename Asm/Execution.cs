@@ -161,7 +161,7 @@ namespace eldotnet.Asm
         
         private static void SetZeroBit(Register register)
         {
-            if(register.GetType() = typeof(Register16))
+            if(register.GetType() == typeof(Register16))
             {
                 if((register as Register16).value == 0)
                     Registers.Z.value = 1;
