@@ -23,7 +23,7 @@ namespace eldotnet.Data
         /// <returns></returns>
         public static Register8  Z  = new Register8 (0);
 
-        private static Dictionary<string, Register> registers;
+        public private static Dictionary<string, Register> registers;
 
         static Registers()
         {
@@ -38,10 +38,12 @@ namespace eldotnet.Data
 
             registers.Add("C", C);
         }
+        /*
         public static string[] ToArray()
         {
             return new string[] {"R1", "R2", "C", "L1", "H1", "L2", "H2"};
         }
+        */
 
         public static bool IsRegister(string name)
         {
