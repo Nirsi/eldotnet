@@ -5,7 +5,5 @@ namespace eldotnet.Asm
         ADD,
         SUB,
         MOV
-
-
     }
 }

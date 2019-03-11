@@ -7,28 +7,12 @@ namespace eldotnet.Data
     {
         public Register8 H;
         public Register8 L;
-        private byte _size;
-         
 
         public Register16(short number = 0)
         {
             H = new Register8();
             L = new Register8();
-            this.size = 16;
             this.value = number;
-        }
-
-
-        public byte size 
-        {
-            get 
-            {
-                return _size;
-            } 
-            private set
-            {
-                this._size = value;
-            }
         }
 
         public short value {

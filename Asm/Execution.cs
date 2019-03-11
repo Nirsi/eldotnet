@@ -41,13 +41,7 @@ namespace eldotnet.Asm
                 }
 
                 //zero register set
-                if((register as Register16).value == 0)
-                    Registers.Z.value = 1;
-                else
-                    Registers.Z.value = 0;
-
-                Log.Out.LogDebug("Zero bit setted to " + Registers.Z.value);
-
+                SetZeroBit(register);
             }
             else
             {
@@ -65,12 +59,7 @@ namespace eldotnet.Asm
                 }
 
                 //zero register set
-                if((register as Register8).value == 0)
-                    Registers.Z.value = 1;
-                else
-                    Registers.Z.value = 0;
-
-                Log.Out.LogDebug("Zero bit setted to " + Registers.Z.value);
+                SetZeroBit(register);
             }
             Registers.C.value += (short)1;
             Log.Out.LogDebug(string.Format("Line count increased to {0}", Registers.C.value));
@@ -96,12 +85,7 @@ namespace eldotnet.Asm
                 }
 
                 //zero register set
-                if((register as Register16).value == 0)
-                    Registers.Z.value = 1;
-                else
-                    Registers.Z.value = 0;
-
-                Log.Out.LogDebug("Zero bit setted to " + Registers.Z.value);
+                SetZeroBit(register);
 
             }
             else
@@ -120,12 +104,7 @@ namespace eldotnet.Asm
                 }
 
                 //zero register set
-                if((register as Register8).value == 0)
-                    Registers.Z.value = 1;
-                else
-                    Registers.Z.value = 0;
-
-                Log.Out.LogDebug("Zero bit setted to " + Registers.Z.value);
+                SetZeroBit(register);
             }
 
             Registers.C.value += (short)1;
@@ -152,13 +131,7 @@ namespace eldotnet.Asm
                 }
 
                 //zero register set
-                if((register as Register16).value == 0)
-                    Registers.Z.value = 1;
-                else
-                    Registers.Z.value = 0;
-
-                Log.Out.LogDebug("Zero bit setted to " + Registers.Z.value);
-
+                SetZeroBit(register);
             }
             else
             {
@@ -175,12 +148,7 @@ namespace eldotnet.Asm
                     (register as Register8).value -= Convert.ToByte(arg2);
                 }
                 //zero register set
-                if((register as Register8).value == 0)
-                    Registers.Z.value = 1;
-                else
-                    Registers.Z.value = 0;
-
-                Log.Out.LogDebug("Zero bit setted to " + Registers.Z.value);
+                SetZeroBit(register);
             }
 
             Registers.C.value += (short)1;
@@ -189,6 +157,30 @@ namespace eldotnet.Asm
 
         #endregion
     
+        #region support methods
+        
+        private static void SetZeroBit(Register register)
+        {
+            if(register.GetType() == typeof(Register16))
+            {
+                if((register as Register16).value == 0)
+                    Registers.Z.value = 1;
+                else
+                    Registers.Z.value = 0;
+            }
+            else
+            {
+                if((register as Register8).value == 0)
+                    Registers.Z.value = 1;
+                else
+                    Registers.Z.value = 0;
+            }
+
+
+                Log.Out.LogDebug("Zero bit setted to " + Registers.Z.value);
+        }
+        
+        #endregion
         
 
     }
