@@ -8,6 +8,7 @@ namespace eldotnet
 {
     class Program
     {
+        static string programName = "test.asm";
         static void Main(string[] args)
         {
             ReportingSet(1);
@@ -16,9 +17,10 @@ namespace eldotnet
             tesing asm file
             TODO: forward args to path
             */
-            Runtime.Init("test.asm");
+            Runtime.Init(programName);
             Runtime.Run();
 
+            Console.WriteLine("End of the program "  + programName);
             Console.ReadLine();
 
         }

@@ -9,6 +9,12 @@ namespace eldotnet.Asm
         {
             return File.ReadAllLines(fileName);
         }
+
+        /// <summary>
+        /// Main method that loads code and let analyzer do its job
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static string[] LoadCode(string fileName)
         {
             string[] Source = ReadSourceLines(fileName);

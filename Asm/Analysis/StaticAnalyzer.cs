@@ -2,6 +2,12 @@ namespace eldotnet.Asm.Analysis
 {
     public class StaticAnalyzer
     {
+
+        /// <summary>
+        /// Main method that takes source code and execute analysis upon it
+        /// </summary>
+        /// <param name="Source"></param>
+        /// <returns></returns>
         public static bool ProcessCode(string[] Source)
         {
 

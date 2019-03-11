@@ -9,6 +9,10 @@ namespace eldotnet.Asm
     {
         public static string[] Source {get; set;}
 
+    /// <summary>
+    /// Init of vCPU that calls loading code and static analysis to be executed upon loaded code
+    /// </summary>
+    /// <param name="sourcepath"></param>
         public static void Init(string sourcepath)
         {
             Log.Out.LogRuntime("Loading source from " + sourcepath);

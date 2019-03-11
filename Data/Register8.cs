@@ -9,9 +9,7 @@ namespace eldotnet.Data
         {
 
         }
-
-
-
+        
         public byte value {
             get{
                 return this.val;
