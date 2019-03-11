@@ -23,10 +23,17 @@ namespace eldotnet.Asm
         /// Main vCPU function
         /// Hardcoded instruction handling not really an ideal state but will rewrite it later on ...maybe
         /// </summary>
-        public static void Run()
+        public static void Run(bool stepping)
         {
             foreach (string line in Source)
             {
+
+                if(stepping)
+                {
+                    Log.Out.LogRuntime("Stepping has been enabled\n Pres any key to progres one instruction ahead");
+                    Console.ReadLine();
+                }
+
                 string[] parts = line.Split(' ');
 
                 switch(parts[0].ToLower())
@@ -52,7 +59,6 @@ namespace eldotnet.Asm
                             Execution.Dec<short>(Registers.NameToRegister(parts[1]), Convert.ToInt16(parts[2]));
                     break;
                 }
-
             }
             
         }
