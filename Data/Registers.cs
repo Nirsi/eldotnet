@@ -23,7 +23,7 @@ namespace eldotnet.Data
         /// <returns></returns>
         public static Register8  Z  = new Register8 (0);
 
-        public private static Dictionary<string, Register> registers;
+        public static Dictionary<string, Register> registers;
 
         static Registers()
         {
