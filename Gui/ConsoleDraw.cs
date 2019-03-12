@@ -9,10 +9,11 @@ namespace eldotnet.Gui
         {
             Console.WriteLine(
                 "------------"+
-                "|" + Registers.C + "|" +
+                "|" + "vCPU Registers" + "|" +
                 "------------"
             );
-            foreach (var keyValuePair in Registers.registers)
+            
+            foreach (var keyValuePair in Registers.ToDictionary())
             {
                 Console.WriteLine(keyValuePair.Key + "\t\t" + GetValue(keyValuePair.Value));
             }

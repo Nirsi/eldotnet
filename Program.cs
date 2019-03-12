@@ -19,7 +19,6 @@ namespace eldotnet
             */
             Runtime.Init(programName);
             Runtime.Run(false);
-            Gui.ConsoleDraw.DrawRegisteresTable();
 
             Console.WriteLine("End of the program "  + programName);
             Console.ReadLine();

@@ -25,15 +25,15 @@ namespace eldotnet.Asm
         /// </summary>
         public static void Run(bool stepping)
         {
+            if(stepping)
+            {
+                Log.Out.LogRuntime("Stepping has been enabled\n Pres any key to progres one instruction ahead\n");
+                Gui.ConsoleDraw.DrawRegisteresTable();
+                Console.ReadLine();  
+            }
+
             foreach (string line in Source)
             {
-
-                if(stepping)
-                {
-                    Log.Out.LogRuntime("Stepping has been enabled\n Pres any key to progres one instruction ahead");
-                    Console.ReadLine();
-                }
-
                 string[] parts = line.Split(' ');
 
                 switch(parts[0].ToLower())
@@ -58,6 +58,13 @@ namespace eldotnet.Asm
                         else
                             Execution.Dec<short>(Registers.NameToRegister(parts[1]), Convert.ToInt16(parts[2]));
                     break;
+                }
+
+                
+                if(stepping)
+                {
+                    Gui.ConsoleDraw.DrawRegisteresTable();
+                    Console.ReadLine();
                 }
             }
             
