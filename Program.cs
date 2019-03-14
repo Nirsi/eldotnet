@@ -18,7 +18,7 @@ namespace eldotnet
             TODO: forward args to path
             */
             Runtime.Init(programName);
-            Runtime.Run(false);
+            Runtime.Run(true);
 
             Console.WriteLine("End of the program "  + programName);
             Console.ReadLine();

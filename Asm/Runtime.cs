@@ -32,9 +32,9 @@ namespace eldotnet.Asm
                 Console.ReadLine();  
             }
 
-            foreach (string line in Source)
+            foreach (var line in Source)
             {
-                string[] parts = line.Split(' ');
+                var parts = line.Split(' ');
 
                 switch(parts[0].ToLower())
                 {
