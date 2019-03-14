@@ -173,7 +173,7 @@ namespace eldotnet.Asm
             }
 
 
-                Log.Out.LogDebug("Zero bit setted to " + Registers.Z.value);
+                Log.Out.LogDebug("Zero bit set to " + Registers.Z.value);
         }
         
         #endregion

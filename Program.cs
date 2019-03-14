@@ -8,13 +8,13 @@ namespace eldotnet
 {
     class Program
     {
-        static string programName = "test.asm";
+        static readonly string programName = "test.asm";
         static void Main(string[] args)
         {
             ReportingSet(1);
 
             /*
-            tesing asm file
+            testing asm file
             TODO: forward args to path
             */
             Runtime.Init(programName);
@@ -37,15 +37,15 @@ namespace eldotnet
                 Log.Out.RuntimeLogged += RuntimeLoggedHandler;
                 return;
             }
-            Console.WriteLine("Loging disabled");
+            Console.WriteLine("Logging disabled");
         }
 
-        static void DebugLoggedHandler(Object sender, ReportLogArgs e)
+        private static void DebugLoggedHandler(object sender, ReportLogArgs e)
         {
             Console.WriteLine("DEBUG:\n" + e.Message);
         }
 
-        static void RuntimeLoggedHandler(Object sender, ReportLogArgs e)
+        private static void RuntimeLoggedHandler(object sender, ReportLogArgs e)
         {
             Console.WriteLine(e.Message);
         }
