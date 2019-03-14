@@ -12,11 +12,11 @@ namespace eldotnet.Asm
     /// <summary>
     /// Init of vCPU that calls loading code and static analysis to be executed upon loaded code
     /// </summary>
-    /// <param name="sourcepath"></param>
-        public static void Init(string sourcepath)
+    /// <param name="sourcePath"></param>
+        public static void Init(string sourcePath)
         {
-            Log.Out.LogRuntime("Loading source from " + sourcepath);
-            Source = Parser.LoadCode(sourcepath);
+            Log.Out.LogRuntime("Loading source from " + sourcePath);
+            Source = Parser.LoadCode(sourcePath);
         }
 
         /// <summary>
@@ -27,14 +27,14 @@ namespace eldotnet.Asm
         {
             if(stepping)
             {
-                Log.Out.LogRuntime("Stepping has been enabled\n Pres any key to progres one instruction ahead\n");
+                Log.Out.LogRuntime("Stepping has been enabled\n Pres any key to progress one instruction ahead\n");
                 Gui.ConsoleDraw.DrawRegisteresTable();
                 Console.ReadLine();  
             }
 
-            foreach (string line in Source)
+            foreach (var line in Source)
             {
-                string[] parts = line.Split(' ');
+                var parts = line.Split(' ');
 
                 switch(parts[0].ToLower())
                 {

@@ -27,16 +27,19 @@ namespace eldotnet.Data
 
         static Registers()
         {
-            registers = new Dictionary<string, Register>();
+            registers = new Dictionary<string, Register>
+            {
+                {"R1", R1},
+                {"R1.L", R1.L},
+                {"R1.H", R1.H},
+                {"R2", R2},
+                {"R2.L", R2.L},
+                {"R2.H", R2.H},
+                {"C", C},
+                {"Z", Z}
+            };
 
-            registers.Add("R1", R1);
-            registers.Add("R1.L", R1.L);
-            registers.Add("R1.H", R1.H);
-            registers.Add("R2", R2);        
-            registers.Add("R2.L", R2.L);
-            registers.Add("R2.H", R2.H);
-            registers.Add("C", C);
-            registers.Add("Z", Z);
+
         }
 
         

@@ -17,10 +17,10 @@ namespace eldotnet.Asm
         /// <returns></returns>
         public static string[] LoadCode(string fileName)
         {
-            string[] Source = ReadSourceLines(fileName);
+            var source = ReadSourceLines(fileName);
 
-            if (Analysis.StaticAnalyzer.ProcessCode(Source))
-                return Source;
+            if (Analysis.StaticAnalyzer.ProcessCode(source))
+                return source;
             else
             {
                 Console.ReadLine();
