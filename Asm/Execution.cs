@@ -13,16 +13,12 @@ namespace eldotnet.Asm
 
         static Execution()
         {
-            Instructions = new List<string>();
+            Instructions = new List<string> {"add", "dec", "mov"};
 
-            Instructions.Add("add");
-            Instructions.Add("dec");
-            Instructions.Add("mov");
         }
 
         #region instruction handling
 
-        protected static Type rType = typeof(Register16);
         public static void Mov<T1>(Register register, T1 arg2)
         {
             if(register.GetType() == typeof(Register16))
@@ -113,7 +109,7 @@ namespace eldotnet.Asm
 
         public static void Dec<T1>(Register register, T1 arg2)
         {
-            Log.Out.LogDebug(string.Format("Add method type informations\nregister is type of {0}\narg2 is type of {1}", register.GetType(), arg2.GetType()));
+            Log.Out.LogDebug(string.Format("Add method type information\nregister is type of {0}\narg2 is type of {1}", register.GetType(), arg2.GetType()));
 
             if(register.GetType() == typeof(Register16))
             {
