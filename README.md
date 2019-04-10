@@ -1,3 +1,3 @@
 # eldotnet
 
-My experiment of creating virtual 16-bit microcpu and custom ASM for it
+My experiment of creating simple virtual 16-bit microcpu in C# with a custom ASM for it.
