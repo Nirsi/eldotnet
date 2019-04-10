@@ -23,7 +23,7 @@ namespace eldotnet.Data
         /// <returns></returns>
         public static Register8  Z  = new Register8 (0);
 
-        private static Dictionary<string, Register> registers;
+        private static readonly Dictionary<string, Register> registers;
 
         static Registers()
         {
@@ -51,14 +51,7 @@ namespace eldotnet.Data
 
         public static bool IsRegister(string name)
         {
-            if(registers.ContainsKey(name))
-            {
-                    return true;
-            }
-            else
-            {
-                return false;
-            }
+            return registers.ContainsKey(name);
         }
 
         public static Register NameToRegister(string registerName)
